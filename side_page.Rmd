@@ -1,0 +1,9 @@
+---
+title: "Side-Note"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+Still haven't adopted a cat
