@@ -1,0 +1,20 @@
+---
+title: "My awesome website"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cerulean
+---
+
+# This is Jeff's awesome website
+
+# Let's add Some links
+
+
+Learn more [here](https://www.petfinder.com/cat/bobbi-46269341/ny/new-york/ready-for-rescue-ny864/)
+
+
+## adding an image
+
+here's my cat ![](bobbi.jpeg)
