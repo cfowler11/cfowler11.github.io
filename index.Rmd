@@ -15,7 +15,7 @@ output:
 
 ## Bobbi
 
-here's my cat ![](bobbi.jpeg)
+here's a cat ![](bobbi.jpeg)
 
 
 
