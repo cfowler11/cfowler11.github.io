@@ -7,14 +7,16 @@ output:
     theme: cerulean
 ---
 
-# This is Jeff's awesome website
-
-# Let's add Some links
+# This is Charly's awesome website
 
 
-Learn more [here](https://www.petfinder.com/cat/bobbi-46269341/ny/new-york/ready-for-rescue-ny864/)
 
 
-## adding an image
+
+## Bobbi
 
 here's my cat ![](bobbi.jpeg)
+
+
+
+Learn more about Bobbi [here](https://www.petfinder.com/cat/bobbi-46269341/ny/new-york/ready-for-rescue-ny864/)
