@@ -1,13 +1,13 @@
 ---
-title: "My awesome website"
+title: "Home"
 output: 
   html_document:
     toc: true
     toc_float: true
-    theme: cerulean
 ---
 
-# This is Charly's awesome website
+# This is Charly's website
+
 
 
 
@@ -16,7 +16,6 @@ output:
 ## Bobbi
 
 here's a cat ![](bobbi.jpeg)
-
 
 
 Learn more about Bobbi [here](https://www.petfinder.com/cat/bobbi-46269341/ny/new-york/ready-for-rescue-ny864/)
