@@ -6,16 +6,7 @@ output:
     toc_float: true
 ---
 
-# This is Charly's website
+![](photos\me.png){width=75%}
 
 
-
-
-
-
-## Bobbi
-
-here's a cat ![](bobbi.jpeg)
-
-
-Learn more about Bobbi [here](https://www.petfinder.com/cat/bobbi-46269341/ny/new-york/ready-for-rescue-ny864/)
+Hi! Welcome to my first ever website. I'm in my first year at Columbia, pursuing a PhD in Biostatistics. Currently, my reserach interests include causal inference, logitudinal data, and applications to health disparities. Feel free to explore the website and email me with any questions.  

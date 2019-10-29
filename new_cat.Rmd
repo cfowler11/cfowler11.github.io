@@ -1,0 +1,29 @@
+---
+title: "My New Cat"
+output: 
+  html_document
+---
+
+
+Meet my new cat! I adopted him last week and am still trying to decide on a name. 
+
+![](photos/bobbi1.png){width=75%}
+
+
+Image from his [adoption page](https://www.petfinder.com/cat/bobbi-46269341/ny/new-york/ready-for-rescue-ny864/)
+
+
+
+
+![](photos/bobbi_window.png){width=75%}
+
+
+He loves watching birds out the window. 
+
+
+
+![](photos\bobbi_cuddly.png){width=75%}
+
+
+
+At night he likes to cuddle under the blankets and hide. 
