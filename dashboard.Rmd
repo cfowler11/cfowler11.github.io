@@ -23,7 +23,7 @@ getmode <- function(v) {
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### Customers
 
 ```{r}
 instacart %>%
@@ -35,24 +35,26 @@ instacart %>%
     num_orders = max(order_number),
     fav_item = getmode(product_name)
   ) %>% 
-  mutate(text_label = str_c("User ID: ", user_id, '\nDepartment: ', department, "\nAvg Days Between Orders: ", avg_days_between_order, "\nFavorite Product:", fav_item)) %>%
+  mutate(text_label = str_c("User ID: ", user_id, '\nDepartment: ', department, "\nAvg Days Between Orders: ", avg_days_between_order, "\nFavorite Product: ", fav_item)) %>%
   plot_ly(
     x = ~num_orders, y = ~avg_items, type = "scatter", mode = "markers",
-    color = ~department, text = ~text_label, alpha = 0.5)
+    color = ~department, text = ~text_label, alpha = 0.5) %>% 
+  layout(xaxis = list(title = "number of orders"), yaxis = list(title = "average items ordered"))
 ```
 
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### Order of Item Added to Cart
 
 ```{r}
 instacart %>% 
   filter(department %in% c("alcohol",  "breakfast", "personal care")) %>%
-  plot_ly(y = ~add_to_cart_order, color = ~department, type = "box")
+  plot_ly(y = ~add_to_cart_order, color = ~department, type = "box") %>% 
+  layout(yaxis = list(title = "order added to cart"))
 ```
 
-### Chart C
+### Sales across the Week by Department
 
 ```{r}
 instacart %>% filter(department %in% c("alcohol",  "breakfast", "personal care")) %>%
@@ -68,6 +70,7 @@ instacart %>% filter(department %in% c("alcohol",  "breakfast", "personal care")
   ungroup() %>% 
   plot_ly(
     x = ~order_dow, y = ~prop, type = 'scatter', mode = 'lines',
-    color = ~department)
+    color = ~department) %>% 
+  layout(xaxis = list(title = ""), yaxis = list(title = "proportion of orders"))
 ```
 

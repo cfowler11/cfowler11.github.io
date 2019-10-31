@@ -6,7 +6,7 @@ output:
     toc_float: true
 ---
 
-![](photos\me.png){width=75%}
+![](photos\me.png){width=40%}
 
 
 Hi! Welcome to my first ever website. I'm in my first year at Columbia, pursuing a PhD in Biostatistics. Currently, my reserach interests include causal inference, logitudinal data, and applications to health disparities. Feel free to explore the website and email me with any questions.  
