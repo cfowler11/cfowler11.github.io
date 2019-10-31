@@ -1,22 +1,56 @@
 ---
-title: "Dashboard"
+title: ""
 output: 
-  html_document
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 
-```{r}
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+
 data("instacart")
 ```
 
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
 ```{r}
-table(instacart$department)
+instacart %>%
+  group_by(user_id, department) %>% 
+  filter(department %in% c("alcohol", "personal care", "breakfast")) %>% 
+  summarise(
+    avg_days_between_order = mean(days_since_prior_order), 
+    avg_items = mean(add_to_cart_order), 
+    num_orders = max(order_number)
+  ) %>% 
+  mutate(text_label = str_c("User ID: ", user_id, '\nDepartment: ', department, "\nAvg Days Between Orders: ", avg_days_between_order)) %>% 
+  #rename("average items per order" = avg_items, "total number of orders" = num_orders) %>%  
+  plot_ly(
+    x = ~num_orders, y = ~avg_items, type = "scatter", mode = "markers",
+    color = ~department, text = ~text_label, alpha = 0.5)
 ```
 
+Column {data-width=350}
+-----------------------------------------------------------------------
 
+### Chart B
 
 ```{r}
 instacart %>% 
-  filter(department %in% c("pets", "alcohol",  "breakfast", "personal care")) %>%
+  filter(department %in% c("alcohol",  "breakfast", "personal care")) %>%
+  plot_ly(y = ~add_to_cart_order, color = ~department, type = "box")
+```
+
+### Chart C
+
+```{r}
+instacart %>% filter(department %in% c("alcohol",  "breakfast", "personal care")) %>%
   group_by(department, order_dow) %>% 
   count() %>% 
   ungroup() %>% 
@@ -27,47 +61,8 @@ instacart %>%
     order_dow = recode(order_dow, '0' = "Monday", '1' = "Tuesday", '2'="Wednesday",      '3'="Thursday", '4'="Friday", '5'="Saturday", '6'="Sunday"), 
   ) %>% 
   ungroup() %>% 
-  ggplot(aes(x = order_dow, y = prop, group = department, color = department)) + 
-  geom_point() + 
-  geom_line()
-           
-```
-
-
-```{r}
-instacart %>% 
-  group_by(department) %>% 
-  summarise(avg = mean (add_to_cart_order)) %>% 
-  mutate(department = fct_reorder(factor(department), avg)) %>% 
-  ggplot(aes(x = department, y = avg)) +
-  geom_bar(stat = "identity") + 
-  coord_flip()
-```
-
-
-```{r}
-instacart %>% 
-  filter(reordered == 1) %>% 
-  group_by(department) %>% 
-  summarise(avg_days = mean(days_since_prior_order)) %>% 
-  mutate(department = fct_reorder(factor(department), avg_days)) %>% 
-  ggplot(aes(x = department, y = avg_days)) + 
-  geom_bar(stat = "identity") + 
-  coord_flip()
-```
-
-```{r}
-instacart %>% 
-  group_by(user_id) %>% 
-  filter(department == "alcohol") %>% 
-  summarise(
-    avg_days_between_order = mean(days_since_prior_order), 
-    avg_items = mean(add_to_cart_order), 
-    num_orders = max(order_number)
-  ) %>% 
-  #mutate(frequent_buyer = ifelse(avg_days_between_order < 10), TRUE) %>% 
-  #filter(num_orders > 25, avg_items > 10 ) %>% 
-  ggplot(aes(x = num_orders, y = avg_items, color = avg_days_between_order)) + 
-  geom_point(alpha = 0.8)
+  plot_ly(
+    x = ~order_dow, y = ~prop, type = 'scatter', mode = 'lines',
+    color = ~department)
 ```
 
