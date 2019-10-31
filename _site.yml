@@ -9,7 +9,7 @@ navbar:
       href: new_cat.html
     - text: "CV"
       href: cv_oct_2019.html
-    - text: Examples
+    - text: Project Examples
       menu:
       - text: "Dashboard"
         href: dashboard.html
