@@ -19,4 +19,4 @@ navbar:
       href: http://github.com/cfowler11/
 output:
   html_document:
-    theme: journal
+    theme: yeti

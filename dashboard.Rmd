@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Instacart Orders of Alcohol, Breakfast, and Personal Care Items"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
