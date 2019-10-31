@@ -13,6 +13,11 @@ library(p8105.datasets)
 library(plotly)
 
 data("instacart")
+
+getmode <- function(v) {
+   uniqv <- unique(v)
+   uniqv[which.max(tabulate(match(v, uniqv)))]
+}
 ```
 
 Column {data-width=650}
@@ -27,10 +32,10 @@ instacart %>%
   summarise(
     avg_days_between_order = mean(days_since_prior_order), 
     avg_items = mean(add_to_cart_order), 
-    num_orders = max(order_number)
+    num_orders = max(order_number),
+    fav_item = getmode(product_name)
   ) %>% 
-  mutate(text_label = str_c("User ID: ", user_id, '\nDepartment: ', department, "\nAvg Days Between Orders: ", avg_days_between_order)) %>% 
-  #rename("average items per order" = avg_items, "total number of orders" = num_orders) %>%  
+  mutate(text_label = str_c("User ID: ", user_id, '\nDepartment: ', department, "\nAvg Days Between Orders: ", avg_days_between_order, "\nFavorite Product:", fav_item)) %>%
   plot_ly(
     x = ~num_orders, y = ~avg_items, type = "scatter", mode = "markers",
     color = ~department, text = ~text_label, alpha = 0.5)
